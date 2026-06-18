@@ -1,0 +1,11 @@
+rg_name      = "cmaz-tkdmv90y-mod4-rg"
+#storage_name = "cmaztkdmv90ysa"
+vnet_name    = "cmaz-tkdmv90y-mod4-vnet"
+subnet_name = "frontend"
+location     = "eastus"
+tag          = { Creator = "sardorxoja_tashxodjaev@epam.com" }
+nic_name      = "cmaz-tkdmv90y-mod4-nic"
+nsg_name      = "cmaz-tkdmv90y-mod4-nsg"
+pip_name      = "cmaz-tkdmv90y-mod4-pip"
+vm_name      = "cmaz-tkdmv90y-mod4-vm"
+dns_name      = "cmaz-tkdmv90y-mod4-nginx"
