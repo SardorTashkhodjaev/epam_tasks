@@ -2,6 +2,12 @@ provider "azurerm" {
   features {}
 }
 
+
+
+/* provider "azurerm" {
+  features {}
+}
+
 resource "azurerm_resource_group" "rg_name" {
   name     = var.rg_name
   location = var.location
@@ -41,4 +47,4 @@ resource "azurerm_subnet" "subnet2" {
   address_prefixes     = ["10.0.2.0/24"]
 
 
-}
+} */

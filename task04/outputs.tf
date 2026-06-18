@@ -1,4 +1,4 @@
-output "rg_id" {
+/* output "rg_id" {
   value       = azurerm_resource_group.rg_name.id
   description = "Resource Group ID"
 }
@@ -12,3 +12,6 @@ output "vnet_id" {
   value       = azurerm_virtual_network.vnet_name.id
   description = "Virtual network ID"
 }
+ */
+
+ 
