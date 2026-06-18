@@ -34,6 +34,7 @@ resource "azurerm_public_ip" "pip" {
   tags                = var.tag
 }
 
+
 resource "azurerm_network_security_group" "nsg" {
   name                = var.nsg_name
   location            = azurerm_resource_group.rg.location
@@ -101,10 +102,6 @@ resource "azurerm_linux_virtual_machine" "vm" {
     azurerm_network_interface.nic.id
   ]
 
-  /*   admin_ssh_key {
-    username   = "adminuser"
-    public_key = file("~/.ssh/id_rsa.pub")
-  } */
 
   os_disk {
     caching              = "ReadWrite"
