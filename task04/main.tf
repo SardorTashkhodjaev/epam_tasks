@@ -16,7 +16,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["10.0.0.0/16"]
 }
 
-resource "azurerm_subnet" "subnet1" {
+resource "azurerm_subnet" "subnet" {
   name                 = var.subnet_name
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
@@ -27,7 +27,7 @@ resource "azurerm_subnet" "subnet1" {
 resource "azurerm_public_ip" "pip" {
   name                = var.pip_name
   resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"
   domain_name_label = var.dns_name
   tags = var.tag
@@ -56,7 +56,7 @@ resource "azurerm_network_security_rule" "nsr_ssh" {
 
 resource "azurerm_network_security_rule" "nsr_http" {
   name                        = var.nsr_http
-  priority                    = 100
+  priority                    = 200
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
@@ -92,15 +92,18 @@ resource "azurerm_linux_virtual_machine" "vm" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   size                = var.vm_sku
+  tags = var.tag
   admin_username      = "adminuser"
+  admin_password = var.vm_password
+  disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.nic.id
   ]
 
-  admin_ssh_key {
+/*   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/id_rsa.pub")
-  }
+  } */
 
   os_disk {
     caching              = "ReadWrite"
@@ -109,8 +112,28 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
     version   = "latest"
   }
+
+provisioner "remote-exec" {
+
+  inline = [
+    "sudo apt update",
+    "sudo apt install -y nginx",
+    "sudo systemctl enable nginx",
+    "sudo systemctl start nginx"
+  ]
+
+  connection {
+    type     = "ssh"
+    host     = azurerm_public_ip.pip.ip_address
+    user     = "adminuser"
+    password = var.vm_password
+    timeout  = "5m"
+  }
 }
+
+}
+

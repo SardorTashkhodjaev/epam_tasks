@@ -68,3 +68,9 @@ variable "vm_os" {
   type        = string
   description = "VM OS Version"
 }
+
+variable "vm_password" {
+  type        = string
+  sensitive   = true
+  description = "VM password"
+}

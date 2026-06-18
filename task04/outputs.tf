@@ -1,17 +1,9 @@
-/* output "rg_id" {
-  value       = azurerm_resource_group.rg_name.id
-  description = "Resource Group ID"
+output "vm_public_ip" {
+  description = "VM public IP"
+  value       = azurerm_public_ip.pip.ip_address
 }
 
-output "sa_blob_endpoint" {
-  value       = azurerm_storage_account.storage_name.primary_blob_endpoint
-  description = "Storage account blob service primary endpoint"
+output "vm_fqdn" {
+  description = "VMs FQDN"
+  value       = azurerm_public_ip.pip.fqdn
 }
-
-output "vnet_id" {
-  value       = azurerm_virtual_network.vnet_name.id
-  description = "Virtual network ID"
-}
- */
-
- 
