@@ -17,7 +17,10 @@ variable "nic_name" {
   type        = string
   description = "Network interface name"
 }
-
+variable "nic_type" {
+  type        = string
+  description = "Network interface type"
+}
 variable "nsg_name" {
   type        = string
   description = "NSG Name name"
