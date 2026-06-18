@@ -29,15 +29,16 @@ resource "azurerm_public_ip" "pip" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"
-  domain_name_label = var.dns_name
-  tags = var.tag
+  sku                 = "Standard"
+  domain_name_label   = var.dns_name
+  tags                = var.tag
 }
 
 resource "azurerm_network_security_group" "nsg" {
   name                = var.nsg_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  tags = var.tag
+  tags                = var.tag
 }
 
 resource "azurerm_network_security_rule" "nsr_ssh" {
@@ -69,7 +70,7 @@ resource "azurerm_network_security_rule" "nsr_http" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name = var.nic_name
+  name                = var.nic_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -77,7 +78,7 @@ resource "azurerm_network_interface" "nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.pip.id
+    public_ip_address_id          = azurerm_public_ip.pip.id
   }
   tags = var.tag
 }
@@ -88,19 +89,19 @@ resource "azurerm_network_interface_security_group_association" "nisga" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                = var.vm_name
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
-  size                = var.vm_sku
-  tags = var.tag
-  admin_username      = "adminuser"
-  admin_password = var.vm_password
+  name                            = var.vm_name
+  resource_group_name             = azurerm_resource_group.rg.name
+  location                        = azurerm_resource_group.rg.location
+  size                            = var.vm_sku
+  tags                            = var.tag
+  admin_username                  = "adminuser"
+  admin_password                  = var.vm_password
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.nic.id
   ]
 
-/*   admin_ssh_key {
+  /*   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/id_rsa.pub")
   } */
@@ -117,23 +118,23 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 
-provisioner "remote-exec" {
+  provisioner "remote-exec" {
 
-  inline = [
-    "sudo apt update",
-    "sudo apt install -y nginx",
-    "sudo systemctl enable nginx",
-    "sudo systemctl start nginx"
-  ]
+    inline = [
+      "sudo apt update",
+      "sudo apt install -y nginx",
+      "sudo systemctl enable nginx",
+      "sudo systemctl start nginx"
+    ]
 
-  connection {
-    type     = "ssh"
-    host     = azurerm_public_ip.pip.ip_address
-    user     = "adminuser"
-    password = var.vm_password
-    timeout  = "5m"
+    connection {
+      type     = "ssh"
+      host     = azurerm_public_ip.pip.ip_address
+      user     = "adminuser"
+      password = var.vm_password
+      timeout  = "5m"
+    }
   }
-}
 
 }
 
