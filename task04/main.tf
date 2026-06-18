@@ -71,12 +71,12 @@ resource "azurerm_network_security_rule" "nsr_http" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name                = var.nic_type
+  name                = var.nic_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
   ip_configuration {
-    name                          = var.nic_name
+    name                          = var.nic_type
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.pip.id
