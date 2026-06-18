@@ -49,3 +49,22 @@ variable "dns_name" {
   description = "DNS name label"
 }
 
+variable "nsr_ssh" {
+  type        = string
+  description = "NSG inbound SSH rule"
+}
+
+variable "nsr_http" {
+  type        = string
+  description = "NSG inbound HTTP rule"
+}
+
+variable "vm_sku" {
+  type        = string
+  description = "VM SKU"
+}
+
+variable "vm_os" {
+  type        = string
+  description = "VM OS Version"
+}
