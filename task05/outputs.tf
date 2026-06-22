@@ -1,9 +1,4 @@
-/* output "vm_public_ip" {
-  description = "VM public IP"
-  value       = azurerm_public_ip.pip.ip_address
+output "traffic_manager_fqdn" {
+  value       = azurerm_traffic_manager_profile.tm.fqdn
+  description = "traffic_manager_fqdn"
 }
-
-output "vm_fqdn" {
-  description = "VMs FQDN"
-  value       = azurerm_public_ip.pip.fqdn
-} */

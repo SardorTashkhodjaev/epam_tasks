@@ -1,15 +1,15 @@
 variable "name" {
-    type = string
-    description = "Name of the ASP"
+  type        = string
+  description = "Name of the ASP"
 }
 
 variable "location" {
-    type = string
-    description = "Location of the ASP"
+  type        = string
+  description = "Location of the ASP"
 }
 
 variable "rg_name" {
-  type = string
+  type        = string
   description = "RG name of the ASP"
 }
 variable "tag" {
@@ -18,8 +18,8 @@ variable "tag" {
 }
 variable "sku" {
   type = object({
-    tier = string
-    size = string
+    tier     = string
+    size     = string
     capacity = number
   })
 
