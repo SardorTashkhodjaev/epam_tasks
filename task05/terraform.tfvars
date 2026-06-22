@@ -61,12 +61,14 @@ tm_dns_name = "tm-dns-config-name"
 
 tm_endpoints = {
   wsp1 = {
-    #name               = "wsp1-endpoint"
+    name = "wsp1-endpoint"
+    #target_resource_id = module.wsp1.id
     weight = 100
   }
 
   wsp2 = {
-    #name               = "wsp2-endpoint"
+    name = "wsp2-endpoint"
+    #target_resource_id = module.wsp2.id
     weight = 100
   }
 }
