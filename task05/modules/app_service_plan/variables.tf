@@ -26,7 +26,10 @@ variable "os" {
   type        = string
   description = "os_name"
 }
-
+variable "worker" {
+  type        = number
+  description = "worker number"
+}
 /* variable "sku" {
   description = "something something"
   type = object({

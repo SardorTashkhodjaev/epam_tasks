@@ -35,6 +35,7 @@ module "asp1" {
   location = module.rg_main1.location
   rg_name  = module.rg_main1.name
   tag      = var.tag
+  worker   = var.app_service_plans["asp1"].worker
 }
 
 module "asp2" {
@@ -46,6 +47,7 @@ module "asp2" {
   location = module.rg_main2.location
   rg_name  = module.rg_main2.name
   tag      = var.tag
+  worker   = var.app_service_plans["asp1"].worker
 }
 
 /* module "asp1" {

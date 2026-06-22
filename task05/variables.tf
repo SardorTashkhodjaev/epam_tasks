@@ -17,6 +17,7 @@ variable "app_service_plans" {
     name     = string
     sku_name = string
     os       = string
+    worker   = number
   }))
 
 }

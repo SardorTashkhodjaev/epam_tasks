@@ -20,6 +20,7 @@ app_service_plans = {
     name     = "cmaz-tkdmv90y-mod5-asp-01"
     os       = "Windows"
     sku_name = "S1"
+    worker   = 2
 
   },
 
@@ -27,6 +28,7 @@ app_service_plans = {
     name     = "cmaz-tkdmv90y-mod5-asp-02"
     os       = "Windows"
     sku_name = "S1"
+    worker   = 1
   }
 }
 
