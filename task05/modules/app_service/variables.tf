@@ -18,12 +18,14 @@ variable "asp_id" {
 }
 
 variable "ip_restrictions" {
+  description = "something something"
   type = list(object({
     name        = string
     priority    = number
     action      = string
     ip_address  = optional(string)
     service_tag = optional(string)
+
   }))
 }
 

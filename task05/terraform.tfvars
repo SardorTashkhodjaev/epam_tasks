@@ -55,6 +55,19 @@ ip_restriction = [
   }
 ]
 
-tm        = "cmaz-tkdmv90y-mod5-traf"
-tm_method = "Performance"
+tm          = "cmaz-tkdmv90y-mod5-traf"
+tm_method   = "Performance"
+tm_dns_name = "tm-dns-config-name"
+
+tm_endpoints = {
+  wsp1 = {
+    #name               = "wsp1-endpoint"
+    weight = 100
+  }
+
+  wsp2 = {
+    #name               = "wsp2-endpoint"
+    weight = 100
+  }
+}
 

@@ -12,6 +12,7 @@ variable "tag" {
 }
 
 variable "app_service_plans" {
+  description = "something something"
   type = map(object({
     name = string
     sku_name = object({
@@ -19,6 +20,7 @@ variable "app_service_plans" {
       size     = string
       capacity = number
     })
+
   }))
 }
 
@@ -33,6 +35,7 @@ variable "app2_name" {
 }
 
 variable "ip_restriction" {
+  description = "something something"
   type = list(object({
     name        = string
     priority    = number
@@ -44,22 +47,24 @@ variable "ip_restriction" {
 
 
 variable "tm" {
-  type = string
+  description = "something something"
+  type        = string
 }
 
 variable "tm_method" {
-  type = string
+  description = "something something"
+  type        = string
 }
 
+variable "tm_dns_name" {
+  type        = string
+  description = "dns_name"
+}
 
-/* variable "app_service_plans" {
+variable "tm_endpoints" {
   type = map(object({
-    name   = string
-    worker = number
-    sku_name = object({
-      tier = string
-      size = string
-    })
+    name               = string
+    target_resource_id = string
+    weight             = number
   }))
-} */
-
+}

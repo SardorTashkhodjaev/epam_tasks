@@ -73,42 +73,26 @@ module "wsp2" {
   tag             = var.tag
 }
 
+module "tm" {
+  source = "./modules/traffic_manager"
 
-resource "azurerm_traffic_manager_profile" "tm" {
-  name                   = var.tm
-  resource_group_name    = module.rg_main3.name
-  traffic_routing_method = var.tm_method
+  name      = var.tm
+  rg_name   = module.rg_main3.name
+  tm_method = var.tm_method
+  tag       = var.tag
+  dns_name  = var.tm_dns_name
 
-  dns_config {
-    relative_name = "tm-dns-config-name"
-    ttl           = 100
+  endpoints = {
+    wsp1 = {
+      name               = "wsp1-endpoint"
+      target_resource_id = module.wsp1.id
+      weight             = var.tm_endpoints["wsp1"].weight
+    }
+
+    wsp2 = {
+      name               = "wsp2-endpoint"
+      target_resource_id = module.wsp2.id
+      weight             = var.tm_endpoints["wsp2"].weight
+    }
   }
-
-  monitor_config {
-    protocol                     = "HTTP"
-    port                         = 80
-    path                         = "/"
-    interval_in_seconds          = 30
-    timeout_in_seconds           = 9
-    tolerated_number_of_failures = 3
-  }
-
-  tags = var.tag
-}
-
-
-resource "azurerm_traffic_manager_azure_endpoint" "end1" {
-  name                 = module.wsp1.name
-  profile_id           = azurerm_traffic_manager_profile.tm.id
-  always_serve_enabled = true
-  weight               = 100
-  target_resource_id   = module.wsp1.id
-}
-
-resource "azurerm_traffic_manager_azure_endpoint" "end2" {
-  name                 = module.wsp2.name
-  profile_id           = azurerm_traffic_manager_profile.tm.id
-  always_serve_enabled = true
-  weight               = 100
-  target_resource_id   = module.wsp2.id
 }

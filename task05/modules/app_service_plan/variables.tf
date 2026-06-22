@@ -17,10 +17,12 @@ variable "tag" {
   description = "My tag "
 }
 variable "sku" {
+  description = "something something"
   type = object({
     tier     = string
     size     = string
     capacity = number
+
   })
 
 }
