@@ -62,6 +62,7 @@ variable "tm_dns_name" {
 }
 
 variable "tm_endpoints" {
+  description = "endpoints"
   type = map(object({
     name               = string
     target_resource_id = string

@@ -25,6 +25,7 @@ variable "tag" {
 }
 
 variable "endpoints" {
+  description = "endpoints"
   type = map(object({
     name               = string
     target_resource_id = string
