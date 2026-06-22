@@ -1,9 +1,9 @@
-/* output "vm_public_ip" {
-  description = "VM public IP"
-  value       = azurerm_public_ip.pip.ip_address
+output "id" {
+  value = azurerm_windows_web_app.APP.id
+  description = "ID of Windows APP"
 }
 
-output "vm_fqdn" {
-  description = "VMs FQDN"
-  value       = azurerm_public_ip.pip.fqdn
-} */
+output "name" {
+  value = azurerm_windows_web_app.APP.name
+  description = "Name of Windows APP"
+}

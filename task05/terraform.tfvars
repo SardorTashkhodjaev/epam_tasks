@@ -35,3 +35,26 @@ app_service_plans = {
     }
   },
 }
+
+
+app1_name = "cmaz-tkdmv90y-mod5-app-01"
+app2_name = "cmaz-tkdmv90y-mod5-app-02"
+
+ip_restriction = [
+  {
+    name       = "allow-ip"
+    priority   = 100
+    action     = "Allow"
+    ip_address = "18.153.146.156/32"
+  },
+  {
+    name        = "allow-tm"
+    priority    = 200
+    action      = "Allow"
+    service_tag = "AzureTrafficManager"
+  }
+]
+
+tm        = "cmaz-tkdmv90y-mod5-traf"
+tm_method = "Performance"
+
