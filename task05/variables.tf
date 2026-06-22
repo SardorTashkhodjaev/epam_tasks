@@ -14,15 +14,13 @@ variable "tag" {
 variable "app_service_plans" {
   description = "something something"
   type = map(object({
-    name = string
-    sku_name = object({
-      tier     = string
-      size     = string
-      capacity = number
-    })
-
+    name     = string
+    sku_name = string
+    os       = string
   }))
+
 }
+
 
 variable "app1_name" {
   type        = string

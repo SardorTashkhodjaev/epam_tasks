@@ -17,23 +17,17 @@ tag = { Creator = "sardorxoja_tashxodjaev@epam.com" }
 
 app_service_plans = {
   asp1 = {
-    name = "cmaz-tkdmv90y-mod5-asp-01"
+    name     = "cmaz-tkdmv90y-mod5-asp-01"
+    os       = "Windows"
+    sku_name = "S1"
 
-    sku_name = {
-      tier     = "Standard"
-      size     = "S1"
-      capacity = 2
-
-    }
   },
+
   asp2 = {
-    name = "cmaz-tkdmv90y-mod5-asp-02"
-    sku_name = {
-      tier     = "Standard"
-      size     = "S1"
-      capacity = 1
-    }
-  },
+    name     = "cmaz-tkdmv90y-mod5-asp-02"
+    os       = "Windows"
+    sku_name = "S1"
+  }
 }
 
 

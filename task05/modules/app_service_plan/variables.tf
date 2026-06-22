@@ -16,7 +16,18 @@ variable "tag" {
   type        = map(string)
   description = "My tag "
 }
-variable "sku" {
+
+variable "sku_name" {
+  type        = string
+  description = "sku_name"
+}
+
+variable "os" {
+  type        = string
+  description = "os_name"
+}
+
+/* variable "sku" {
   description = "something something"
   type = object({
     tier     = string
@@ -25,7 +36,7 @@ variable "sku" {
 
   })
 
-}
+} */
 
 /* variable "worker_count" {  
   type = number

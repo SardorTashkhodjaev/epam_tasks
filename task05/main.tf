@@ -29,6 +29,28 @@ module "rg_main3" {
 module "asp1" {
   source = "./modules/app_service_plan"
 
+  name     = var.app_service_plans["asp1"].name
+  sku_name = var.app_service_plans["asp1"].sku_name
+  os       = var.app_service_plans["asp1"].os
+  location = module.rg_main1.location
+  rg_name  = module.rg_main1.name
+  tag      = var.tag
+}
+
+module "asp2" {
+  source = "./modules/app_service_plan"
+
+  name     = var.app_service_plans["asp2"].name
+  sku_name = var.app_service_plans["asp2"].sku_name
+  os       = var.app_service_plans["asp2"].os
+  location = module.rg_main2.location
+  rg_name  = module.rg_main2.name
+  tag      = var.tag
+}
+
+/* module "asp1" {
+  source = "./modules/app_service_plan"
+
   name = var.app_service_plans["asp1"].name
   #worker_count = var.app_service_plans["asp1"].worker_count
   sku      = var.app_service_plans["asp1"].sku_name
@@ -49,7 +71,7 @@ module "asp2" {
   rg_name  = module.rg_main2.name
   tag      = var.tag
 
-}
+} */
 
 
 module "wsp1" {
