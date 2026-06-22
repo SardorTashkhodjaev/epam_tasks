@@ -1,16 +1,37 @@
-/* rg_name = "cmaz-tkdmv90y-mod4-rg"
-#storage_name = "cmaztkdmv90ysa"
-vnet_name   = "cmaz-tkdmv90y-mod4-vnet"
-subnet_name = "frontend"
-location    = "eastus"
-tag         = { Creator = "sardorxoja_tashxodjaev@epam.com" }
-nic_name    = "cmaz-tkdmv90y-mod4-nic"
-nic_type    = "internal"
-nsg_name    = "cmaz-tkdmv90y-mod4-nsg"
-pip_name    = "cmaz-tkdmv90y-mod4-pip"
-vm_name     = "cmaz-tkdmv90y-mod4-vm"
-dns_name    = "cmaz-tkdmv90y-mod4-nginx"
-nsr_http    = "AllowHTTP"
-nsr_ssh     = "AllowSSH"
-vm_sku      = "Standard_B2s_v2"
-vm_os       = "ubuntu-24_04-lts" */
+resource_groups = {
+  rg1 = {
+    name     = "cmaz-tkdmv90y-mod5-rg-01"
+    location = "East US"
+  },
+  rg2 = {
+    name     = "cmaz-tkdmv90y-mod5-rg-02"
+    location = "West US"
+  },
+  rg3 = {
+    name     = "cmaz-tkdmv90y-mod5-rg-03"
+    location = "Central US"
+  }
+}
+
+tag = { Creator = "sardorxoja_tashxodjaev@epam.com" }
+
+app_service_plans = {
+  asp1 = {
+    name = "cmaz-tkdmv90y-mod5-asp-01"
+
+    sku_name = {
+      tier     = "Standard"
+      size     = "S1"
+      capacity = 2
+
+    }
+  },
+  asp2 = {
+    name = "cmaz-tkdmv90y-mod5-asp-02"
+    sku_name = {
+      tier     = "Standard"
+      size     = "S1"
+      capacity = 1
+    }
+  },
+}

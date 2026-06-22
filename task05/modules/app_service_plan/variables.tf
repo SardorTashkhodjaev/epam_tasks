@@ -1,79 +1,31 @@
-/* variable "rg_name" {
-  type        = string
-  description = "Resource Group name"
-}
-
-variable "vnet_name" {
-  type        = string
-  description = "Virtual network name"
-}
-
-variable "subnet_name" {
-  type        = string
-  description = "Subnet 1 name"
-}
-
-variable "nic_name" {
-  type        = string
-  description = "Network interface name"
-}
-variable "nic_type" {
-  type        = string
-  description = "Network interface type"
-}
-variable "nsg_name" {
-  type        = string
-  description = "NSG Name name"
+variable "name" {
+    type = string
+    description = "Name of the ASP"
 }
 
 variable "location" {
-  type        = string
-  description = "Where is located"
+    type = string
+    description = "Location of the ASP"
 }
 
+variable "rg_name" {
+  type = string
+  description = "RG name of the ASP"
+}
 variable "tag" {
   type        = map(string)
   description = "My tag "
+}
+variable "sku" {
+  type = object({
+    tier = string
+    size = string
+    capacity = number
+  })
 
 }
 
-variable "pip_name" {
-  type        = string
-  description = "Public IP name"
-}
-
-variable "vm_name" {
-  type        = string
-  description = "VM name"
-}
-
-variable "dns_name" {
-  type        = string
-  description = "DNS name label"
-}
-
-variable "nsr_ssh" {
-  type        = string
-  description = "NSG inbound SSH rule"
-}
-
-variable "nsr_http" {
-  type        = string
-  description = "NSG inbound HTTP rule"
-}
-
-variable "vm_sku" {
-  type        = string
-  description = "VM SKU"
-}
-
-variable "vm_os" {
-  type        = string
-  description = "VM OS Version"
-}
-
-variable "vm_password" {
-  type        = string
-  sensitive   = true
-  description = "VM password"
+/* variable "worker_count" {  
+  type = number
+  description = "Numer of workers"
 } */

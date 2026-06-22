@@ -1,79 +1,35 @@
-/* variable "rg_name" {
-  type        = string
-  description = "Resource Group name"
-}
-
-variable "vnet_name" {
-  type        = string
-  description = "Virtual network name"
-}
-
-variable "subnet_name" {
-  type        = string
-  description = "Subnet 1 name"
-}
-
-variable "nic_name" {
-  type        = string
-  description = "Network interface name"
-}
-variable "nic_type" {
-  type        = string
-  description = "Network interface type"
-}
-variable "nsg_name" {
-  type        = string
-  description = "NSG Name name"
-}
-
-variable "location" {
-  type        = string
-  description = "Where is located"
+variable "resource_groups" {
+  type = map(object({
+    name     = string
+    location = string
+  }))
+  description = "A map of resource group objects"
 }
 
 variable "tag" {
   type        = map(string)
-  description = "My tag "
-
+  description = "My tag"
 }
 
-variable "pip_name" {
-  type        = string
-  description = "Public IP name"
+variable "app_service_plans" {
+  type = map(object({
+    name = string
+    sku_name = object({
+      tier     = string
+      size     = string
+      capacity = number
+    })
+  }))
 }
 
-variable "vm_name" {
-  type        = string
-  description = "VM name"
-}
-
-variable "dns_name" {
-  type        = string
-  description = "DNS name label"
-}
-
-variable "nsr_ssh" {
-  type        = string
-  description = "NSG inbound SSH rule"
-}
-
-variable "nsr_http" {
-  type        = string
-  description = "NSG inbound HTTP rule"
-}
-
-variable "vm_sku" {
-  type        = string
-  description = "VM SKU"
-}
-
-variable "vm_os" {
-  type        = string
-  description = "VM OS Version"
-}
-
-variable "vm_password" {
-  type        = string
-  sensitive   = true
-  description = "VM password"
+/* variable "app_service_plans" {
+  type = map(object({
+    name   = string
+    worker = number
+    sku_name = object({
+      tier = string
+      size = string
+    })
+  }))
 } */
+
