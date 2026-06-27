@@ -1,24 +1,26 @@
-/* resource "azurerm_windows_web_app" "APP" {
-  name                = var.name
-  location            = var.location
+resource "azurerm_mssql_server" "example" {
+  name                = var.server_name
   resource_group_name = var.rg_name
-  service_plan_id     = var.asp_id
-  tags                = var.tag
-  site_config {
-    ip_restriction_default_action = "Deny"
+  location            = var.location
+  version             = "12.0"
 
-    dynamic "ip_restriction" {
-      for_each = var.ip_restrictions
-
-      content {
-        name        = ip_restriction.value.name
-        priority    = ip_restriction.value.priority
-        action      = ip_restriction.value.action
-        ip_address  = try(ip_restriction.value.ip_address, null)
-        service_tag = try(ip_restriction.value.service_tag, null)
-      }
-    }
+  azuread_administrator {
+    login_username = "AzureAD Admin"
+    object_id      = "00000000-0000-0000-0000-000000000000"
   }
 
+  tags = var.tag
+
 }
- */
+
+resource "azurerm_mssql_database" "example" {
+  name      = var.db_name
+  server_id = azurerm_mssql_server.example.id
+  #collation    = "SQL_Latin1_General_CP1_CI_AS"
+  #license_type = "LicenseIncluded"
+  #max_size_gb  = 2
+  sku_name = var.sku
+  #enclave_type = "VBS"
+
+  tags = var.tag
+}

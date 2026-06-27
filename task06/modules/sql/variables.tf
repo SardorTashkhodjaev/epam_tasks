@@ -1,35 +1,29 @@
-/* variable "name" {
-  type        = string
-  description = "Windows web app name"
+variable "tag" {
+  type        = map(string)
+  description = "My tag"
 }
 
-variable "location" {
+variable "server_name" {
   type        = string
-  description = "Windows web app location"
+  description = "Server name"
 }
 
 variable "rg_name" {
   type        = string
-  description = "Windows web app rg_name"
+  description = "RG name"
 }
-variable "asp_id" {
+
+variable "location" {
   type        = string
-  description = "Windows web app asp_id"
+  description = "Location"
 }
 
-variable "ip_restrictions" {
-  description = "something something"
-  type = list(object({
-    name        = string
-    priority    = number
-    action      = string
-    ip_address  = optional(string)
-    service_tag = optional(string)
-
-  }))
+variable "db_name" {
+  type        = string
+  description = "DB name"
 }
 
-variable "tag" {
-  type        = map(string)
-  description = "My tag"
-} */
+variable "sku" {
+  type        = string
+  description = "DB sku"
+}

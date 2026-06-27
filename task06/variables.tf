@@ -1,9 +1,64 @@
-/* variable "resource_groups" {
-  type = map(object({
-    name     = string
-    location = string
-  }))
-  description = "A map of resource group objects"
+variable "name_prefix" {
+  type        = string
+  description = "Name prefix for all var"
+
+}
+
+variable "location" {
+  type        = string
+  description = "Location"
+}
+
+variable "ex_kv_rg_name" {
+  type        = string
+  description = "Existing Key Vault Resource group name"
+}
+
+variable "ex_kv_name" {
+  type        = string
+  description = "Existing Key Vault Name"
+}
+
+variable "kv_sql_admin_name" {
+  type        = string
+  description = "Key Vault Secret name for SQL admin name"
+
+}
+
+variable "kv_sql_admin_pass" {
+  type        = string
+  description = "Key Vault Secret name for SQL admin password"
+}
+
+variable "sql_model" {
+  type        = string
+  description = "SQL Database service model"
+}
+
+variable "sql_fw_rule_name" {
+  type        = string
+  description = "SQL Server Firewall Rule name"
+}
+
+variable "asp_sku" {
+  type        = string
+  description = "App Service PLan SKU"
+}
+
+variable "asp_os" {
+  type        = string
+  description = "App Service PLan OS"
+}
+
+
+variable "app_name" {
+  type        = string
+  description = "Web Application name:"
+}
+
+variable "dotnet_vers" {
+  type        = string
+  description = "Web Application dotnet version"
 }
 
 variable "tag" {
@@ -11,60 +66,8 @@ variable "tag" {
   description = "My tag"
 }
 
-variable "app_service_plans" {
-  description = "something something"
-  type = map(object({
-    name     = string
-    sku_name = string
-    os       = string
-    worker   = number
-  }))
-
-}
-
-
-variable "app1_name" {
+variable "ip_address" {
   type        = string
-  description = "App1_name"
+  description = "Verification agent IP address"
 }
 
-variable "app2_name" {
-  type        = string
-  description = "App2_name"
-}
-
-variable "ip_restriction" {
-  description = "something something"
-  type = list(object({
-    name        = string
-    priority    = number
-    action      = string
-    ip_address  = optional(string)
-    service_tag = optional(string)
-  }))
-}
-
-
-variable "tm" {
-  description = "something something"
-  type        = string
-}
-
-variable "tm_method" {
-  description = "something something"
-  type        = string
-}
-
-variable "tm_dns_name" {
-  type        = string
-  description = "dns_name"
-}
-
-variable "tm_endpoints" {
-  description = "endpoints"
-  type = map(object({
-    name = string
-    #target_resource_id = string
-    weight = number
-  }))
-} */

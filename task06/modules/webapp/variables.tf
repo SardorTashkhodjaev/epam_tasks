@@ -1,33 +1,40 @@
-/* variable "name" {
+variable "asp_name" {
   type        = string
   description = "Name of the ASP"
 }
 
+variable "web_app_name" {
+  type        = string
+  description = "Name web application"
+}
+
 variable "location" {
   type        = string
-  description = "Location of the ASP"
+  description = "Location"
 }
 
 variable "rg_name" {
   type        = string
-  description = "RG name of the ASP"
-}
-variable "tag" {
-  type        = map(string)
-  description = "My tag "
-}
-
-variable "sku_name" {
-  type        = string
-  description = "sku_name"
+  description = "RG name"
 }
 
 variable "os" {
   type        = string
-  description = "os_name"
+  description = "OS"
 }
-variable "worker" {
-  type        = number
-  description = "worker number"
+
+variable "sku" {
+  type        = string
+  description = "SKU"
 }
- */
+
+variable "dotnet" {
+  type        = string
+  description = "Dotnet version"
+}
+
+
+variable "tag" {
+  type        = map(string)
+  description = "my tag"
+}

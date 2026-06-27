@@ -1,13 +1,19 @@
-/* resource_groups = {
-  rg1 = {
-    name     = "cmaz-tkdmv90y-mod5-rg-01"
-    location = "East US"
-  },
-  rg2 = {
-    name     = "cmaz-tkdmv90y-mod5-rg-02"
-    location = "West US"
-  },
-  rg3 = {
+name_prefix       = "cmaz-tkdmv90y-mod6"
+location          = "eastus2"
+ex_kv_rg_name     = "cmaz-tkdmv90y-mod6-kv-rg"
+ex_kv_name        = "cmaz-tkdmv90y-mod6-kv"
+kv_sql_admin_name = "sql-admin-name"
+kv_sql_admin_pass = "sql-admin-password"
+sql_model         = "S2"
+sql_fw_rule_name  = "allow-verification-ip"
+asp_sku           = "P0v3"
+app_name          = "cmaz-tkdmv90y-mod6-app"
+dotnet_vers       = "8.0"
+tag               = { Creator = "sardorxoja_tashxodjaev@epam.com" }
+ip_address        = "18.153.146.156"
+asp_os            = "Linux"
+
+/*
     name     = "cmaz-tkdmv90y-mod5-rg-03"
     location = "Central US"
   }

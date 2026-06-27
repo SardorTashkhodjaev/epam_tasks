@@ -1,3 +1,25 @@
+provider "azurerm" {
+  features {}
+
+}
+
+module "webapp" {
+  source = "./modules/webapp"
+
+  asp_name = local.asp_name
+  rg_name  = local.rg_name
+  location = var.location
+  os       = var.asp_os
+  sku      = var.asp_sku
+  tag      = var.tag
+
+  web_app_name = local.app_name
+  dotnet       = var.dotnet_vers
+
+}
+
+
+
 /* provider "azurerm" {
   features {}
 }
