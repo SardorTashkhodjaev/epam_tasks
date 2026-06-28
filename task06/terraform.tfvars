@@ -1,5 +1,5 @@
 name_prefix       = "cmaz-tkdmv90y-mod6"
-location          = "westeurope"
+location          = "francecentral"
 ex_kv_rg_name     = "cmaz-tkdmv90y-mod6-kv-rg"
 ex_kv_name        = "cmaz-tkdmv90y-mod6-kv"
 kv_sql_admin_name = "sql-admin-name"
