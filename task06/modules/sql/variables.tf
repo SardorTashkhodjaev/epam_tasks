@@ -1,6 +1,6 @@
 variable "tag" {
   type        = map(string)
-  description = "My tag"
+  description = "My tag with name"
 }
 
 variable "server_name" {
@@ -10,22 +10,22 @@ variable "server_name" {
 
 variable "rg_name" {
   type        = string
-  description = "RG name"
+  description = "Resource Group name"
 }
 
 variable "location" {
   type        = string
-  description = "Location"
+  description = "Location of instances"
 }
 
 variable "db_name" {
   type        = string
-  description = "DB name"
+  description = "Data Base name"
 }
 
 variable "sku" {
   type        = string
-  description = "DB sku"
+  description = "Data Base sku"
 }
 
 variable "allowed_ip_address" {
@@ -53,7 +53,7 @@ variable "kv_name" {
 
 variable "kv_rg" {
   type        = string
-  description = "Existing KV RG"
+  description = "Existing KV Resource Group"
 }
 
 variable "kv_admin_name" {

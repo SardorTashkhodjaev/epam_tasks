@@ -10,22 +10,22 @@ variable "web_app_name" {
 
 variable "location" {
   type        = string
-  description = "Location"
+  description = "Location of instances"
 }
 
 variable "rg_name" {
   type        = string
-  description = "RG name"
+  description = "Resource Group name"
 }
 
 variable "os" {
   type        = string
-  description = "OS"
+  description = "OS for instance"
 }
 
 variable "sku" {
   type        = string
-  description = "SKU"
+  description = "SKU type"
 }
 
 variable "dotnet" {
@@ -36,7 +36,7 @@ variable "dotnet" {
 
 variable "tag" {
   type        = map(string)
-  description = "my tag"
+  description = "my tag with name"
 }
 
 variable "sql_connection_string" {

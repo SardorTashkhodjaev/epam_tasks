@@ -6,7 +6,7 @@ variable "name_prefix" {
 
 variable "location" {
   type        = string
-  description = "Location"
+  description = "Location of the instances"
 }
 
 variable "ex_kv_rg_name" {
@@ -50,12 +50,6 @@ variable "asp_os" {
   description = "App Service PLan OS"
 }
 
-
-/* variable "app_name" {
-  type        = string
-  description = "Web Application name:"
-} */
-
 variable "dotnet_vers" {
   type        = string
   description = "Web Application dotnet version"
@@ -63,7 +57,7 @@ variable "dotnet_vers" {
 
 variable "tag" {
   type        = map(string)
-  description = "My tag"
+  description = "My tag with name"
 }
 
 
