@@ -66,10 +66,7 @@ variable "tag" {
   description = "My tag"
 }
 
-variable "ip_address" {
-  type        = string
-  description = "Verification agent IP address"
-}
+
 
 variable "allowed_ip_address" {
   type        = string

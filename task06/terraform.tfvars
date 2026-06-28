@@ -10,9 +10,8 @@ asp_sku           = "P0v3"
 #app_name           = "cmaz-tkdmv90y-mod6-app"
 dotnet_vers        = "8.0"
 tag                = { Creator = "sardorxoja_tashxodjaev@epam.com" }
-ip_address         = "18.153.146.156"
 asp_os             = "Linux"
-allowed_ip_address = "144.124.192.193"
+allowed_ip_address = "18.153.146.156"
 sql_admin_username = "ztemw"
 
 /*
