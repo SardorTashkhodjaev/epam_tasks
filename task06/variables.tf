@@ -51,10 +51,10 @@ variable "asp_os" {
 }
 
 
-variable "app_name" {
+/* variable "app_name" {
   type        = string
   description = "Web Application name:"
-}
+} */
 
 variable "dotnet_vers" {
   type        = string
@@ -71,3 +71,14 @@ variable "ip_address" {
   description = "Verification agent IP address"
 }
 
+variable "allowed_ip_address" {
+  type        = string
+  description = "accepted IP"
+
+}
+
+variable "sql_admin_username" {
+  type        = string
+  description = "Login for admin"
+
+}

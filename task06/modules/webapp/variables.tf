@@ -38,3 +38,9 @@ variable "tag" {
   type        = map(string)
   description = "my tag"
 }
+
+variable "sql_connection_string" {
+  description = "SQL Database connection string"
+  type        = string
+  sensitive   = true
+}

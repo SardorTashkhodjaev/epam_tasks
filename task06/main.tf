@@ -3,12 +3,18 @@ provider "azurerm" {
 
 }
 
+resource "azurerm_resource_group" "task6" {
+  name     = local.rg_name
+  location = var.location
+  tags     = var.tag
+}
+
 module "webapp" {
   source = "./modules/webapp"
 
   asp_name = local.asp_name
-  rg_name  = local.rg_name
-  location = var.location
+  rg_name  = azurerm_resource_group.task6.name
+  location = azurerm_resource_group.task6.location
   os       = var.asp_os
   sku      = var.asp_sku
   tag      = var.tag
@@ -16,106 +22,25 @@ module "webapp" {
   web_app_name = local.app_name
   dotnet       = var.dotnet_vers
 
-}
-
-
-
-/* provider "azurerm" {
-  features {}
-}
-
-module "rg_main1" {
-  source   = "./modules/resource_group"
-  name     = var.resource_groups["rg1"].name
-  location = var.resource_groups["rg1"].location
-  tag      = var.tag
+  sql_connection_string = module.sql.sql_connection_string
 
 }
 
-module "rg_main2" {
-  source   = "./modules/resource_group"
-  name     = var.resource_groups["rg2"].name
-  location = var.resource_groups["rg2"].location
-  tag      = var.tag
+module "sql" {
+  source = "./modules/sql"
+
+  server_name        = local.sql_server_name
+  rg_name            = azurerm_resource_group.task6.name
+  location           = azurerm_resource_group.task6.location
+  tag                = var.tag
+  allowed_ip_address = var.allowed_ip_address
+  db_name            = local.sql_db_name
+  sku                = var.sql_model
+  sql_admin_username = var.sql_admin_username
+  sq_fw_rule         = var.sql_fw_rule_name
+  kv_name            = var.ex_kv_name
+  kv_rg              = var.ex_kv_rg_name
+  kv_admin_name      = var.kv_sql_admin_name
+  kv_admin_pass      = var.kv_sql_admin_pass
 
 }
-
-module "rg_main3" {
-  source   = "./modules/resource_group"
-  name     = var.resource_groups["rg3"].name
-  location = var.resource_groups["rg3"].location
-  tag      = var.tag
-
-}
-
-module "asp1" {
-  source = "./modules/app_service_plan"
-
-  name     = var.app_service_plans["asp1"].name
-  sku_name = var.app_service_plans["asp1"].sku_name
-  os       = var.app_service_plans["asp1"].os
-  location = module.rg_main1.location
-  rg_name  = module.rg_main1.name
-  tag      = var.tag
-  worker   = var.app_service_plans["asp1"].worker
-}
-
-module "asp2" {
-  source = "./modules/app_service_plan"
-
-  name     = var.app_service_plans["asp2"].name
-  sku_name = var.app_service_plans["asp2"].sku_name
-  os       = var.app_service_plans["asp2"].os
-  location = module.rg_main2.location
-  rg_name  = module.rg_main2.name
-  tag      = var.tag
-  worker   = var.app_service_plans["asp2"].worker
-}
-
-
-
-module "wsp1" {
-  source          = "./modules/app_service"
-  name            = var.app1_name
-  location        = module.rg_main1.location
-  rg_name         = module.rg_main1.name
-  asp_id          = module.asp1.id
-  tag             = var.tag
-  ip_restrictions = var.ip_restriction
-
-}
-
-module "wsp2" {
-  source          = "./modules/app_service"
-  name            = var.app2_name
-  location        = module.rg_main2.location
-  rg_name         = module.rg_main2.name
-  asp_id          = module.asp2.id
-  ip_restrictions = var.ip_restriction
-  tag             = var.tag
-}
-
-module "tm" {
-  source = "./modules/traffic_manager"
-
-  name      = var.tm
-  rg_name   = module.rg_main3.name
-  tm_method = var.tm_method
-  tag       = var.tag
-  dns_name  = var.tm_dns_name
-
-  endpoints = {
-    wsp1 = {
-      name               = "wsp1-endpoint"
-      target_resource_id = module.wsp1.id
-      weight             = var.tm_endpoints["wsp1"].weight
-    }
-
-    wsp2 = {
-      name               = "wsp2-endpoint"
-      target_resource_id = module.wsp2.id
-      weight             = var.tm_endpoints["wsp2"].weight
-    }
-  }
-}
- */

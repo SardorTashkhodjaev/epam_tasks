@@ -27,3 +27,41 @@ variable "sku" {
   type        = string
   description = "DB sku"
 }
+
+variable "allowed_ip_address" {
+  type        = string
+  description = "accepted IP"
+
+}
+
+variable "sql_admin_username" {
+  type        = string
+  description = "Login for admin"
+
+}
+
+variable "sq_fw_rule" {
+  type        = string
+  description = "sq_fw_rule_name"
+}
+
+variable "kv_name" {
+  type        = string
+  description = "Existing KV"
+}
+
+
+variable "kv_rg" {
+  type        = string
+  description = "Existing KV RG"
+}
+
+variable "kv_admin_name" {
+  type        = string
+  description = "kv_admin_name"
+}
+
+variable "kv_admin_pass" {
+  type        = string
+  description = "kv_admin_pass"
+}

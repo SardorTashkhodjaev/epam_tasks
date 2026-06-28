@@ -13,10 +13,15 @@ resource "azurerm_linux_web_app" "example" {
   location            = var.location
   service_plan_id     = azurerm_service_plan.example.id
   #dotnet_version = var.dotnet
-
+  tags = var.tag
   site_config {
     application_stack {
       dotnet_version = var.dotnet
     }
+  }
+  connection_string {
+    name  = "sqlconnection"
+    type  = "SQLAzure"
+    value = var.sql_connection_string
   }
 }
