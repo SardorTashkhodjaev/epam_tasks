@@ -1,4 +1,4 @@
-output "sql_fqdn" {
+/* output "sql_fqdn" {
   value       = azurerm_mssql_server.server.fully_qualified_domain_name
   description = "SQL server fully qualified domain name"
 }
@@ -17,3 +17,4 @@ output "sql_connection_string" {
   sensitive = true
 }
 
+ */

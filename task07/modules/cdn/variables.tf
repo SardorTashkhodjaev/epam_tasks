@@ -1,67 +1,44 @@
-variable "tag" {
-  type        = map(string)
-  description = "My tag with name"
-}
-
-variable "server_name" {
-  type        = string
-  description = "Server name"
-}
-
-variable "rg_name" {
-  type        = string
-  description = "Resource Group name"
-}
-
 variable "location" {
-  type        = string
-  description = "Location of instances"
+  type = string
+  default = "Location of resources"
 }
 
-variable "db_name" {
-  type        = string
-  description = "Data Base name"
+variable "name_prefix" {
+  type = string
+  default = "Name prefix for resources"
 }
 
-variable "sku" {
-  type        = string
-  description = "Data Base sku"
+variable "resource_group_id" {
+  type = string
+  default = "Resource Group ID"
 }
 
-variable "allowed_ip_address" {
-  type        = string
-  description = "accepted IP"
-
+variable "storage_account_name" {
+  type = string
+  default = "Storage Account name"
 }
 
-variable "sql_admin_username" {
-  type        = string
-  description = "Login for admin"
-
+variable "storage_account_id" {
+  type = string
+  default = "Storage account ID"
 }
 
-variable "sq_fw_rule" {
-  type        = string
-  description = "sq_fw_rule_name"
+variable "filename_in_storage_account" {
+  type = string
+  default = "Filename in Storage Account"
 }
 
-variable "kv_name" {
-  type        = string
-  description = "Existing KV"
+variable "cdn_fd_sku" {
+  type = string
+  default = "CDN Front Door profile SKU"
 }
 
-
-variable "kv_rg" {
-  type        = string
-  description = "Existing KV Resource Group"
+variable "cdn_fd_route_name" {
+  type = string
+  default = "CDN Front Door route name:"
 }
 
-variable "kv_admin_name" {
-  type        = string
-  description = "kv_admin_name"
-}
-
-variable "kv_admin_pass" {
-  type        = string
-  description = "kv_admin_pass"
+variable "tag" {
+  type = map(string)
+  description = "My tag with name"
 }

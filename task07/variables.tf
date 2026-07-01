@@ -1,75 +1,44 @@
-variable "name_prefix" {
-  type        = string
-  description = "Name prefix for all var"
-
-}
-
 variable "location" {
-  type        = string
-  description = "Location of the instances"
+  type = string
+  default = "Location of resources"
 }
 
-variable "ex_kv_rg_name" {
-  type        = string
-  description = "Existing Key Vault Resource group name"
+variable "name_prefix" {
+  type = string
+  default = "Name prefix for resources"
 }
 
-variable "ex_kv_name" {
-  type        = string
-  description = "Existing Key Vault Name"
+variable "resource_group_id" {
+  type = string
+  default = "Resource Group ID"
 }
 
-variable "kv_sql_admin_name" {
-  type        = string
-  description = "Key Vault Secret name for SQL admin name"
-
+variable "storage_account_name" {
+  type = string
+  default = "Storage Account name"
 }
 
-variable "kv_sql_admin_pass" {
-  type        = string
-  description = "Key Vault Secret name for SQL admin password"
+variable "storage_account_id" {
+  type = string
+  default = "Storage account ID"
 }
 
-variable "sql_model" {
-  type        = string
-  description = "SQL Database service model"
+variable "filename_in_storage_account" {
+  type = string
+  default = "Filename in Storage Account"
 }
 
-variable "sql_fw_rule_name" {
-  type        = string
-  description = "SQL Server Firewall Rule name"
+variable "cdn_fd_sku" {
+  type = string
+  default = "CDN Front Door profile SKU"
 }
 
-variable "asp_sku" {
-  type        = string
-  description = "App Service PLan SKU"
-}
-
-variable "asp_os" {
-  type        = string
-  description = "App Service PLan OS"
-}
-
-variable "dotnet_vers" {
-  type        = string
-  description = "Web Application dotnet version"
+variable "cdn_fd_route_name" {
+  type = string
+  default = "CDN Front Door route name:"
 }
 
 variable "tag" {
-  type        = map(string)
+  type = map(string)
   description = "My tag with name"
-}
-
-
-
-variable "allowed_ip_address" {
-  type        = string
-  description = "accepted IP"
-
-}
-
-variable "sql_admin_username" {
-  type        = string
-  description = "Login for admin"
-
 }

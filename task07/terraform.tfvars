@@ -1,79 +1,10 @@
-name_prefix       = "cmaz-tkdmv90y-mod6"
-location          = "francecentral"
-ex_kv_rg_name     = "cmaz-tkdmv90y-mod6-kv-rg"
-ex_kv_name        = "cmaz-tkdmv90y-mod6-kv"
-kv_sql_admin_name = "sql-admin-name"
-kv_sql_admin_pass = "sql-admin-password"
-sql_model         = "S2"
-sql_fw_rule_name  = "allow-verification-ip"
-asp_sku           = "P0v3"
-#app_name           = "cmaz-tkdmv90y-mod6-app"
-dotnet_vers        = "8.0"
+location = "francecentral"
+name_prefix = "cmtr-tkdmv90y-mod7"
+resource_group_id = "/subscriptions/573ca0aa-e84c-48fe-86d9-6a27d550faf3/resourceGroups/cmtr-tkdmv90y-mod7-rg"
+storage_account_name = "cmtrtkdmv90ymod7sa"
+storage_account_id = "/subscriptions/573ca0aa-e84c-48fe-86d9-6a27d550faf3/resourceGroups/cmtr-tkdmv90y-mod7-rg/providers/Microsoft.Storage/storageAccounts/cmtrtkdmv90ymod7sa"
+filename_in_storage_account = "blob.txt"
+cdn_fd_sku = "Standard_AzureFrontDoor"
+cdn_fd_route_name = "default"
 tag                = { Creator = "sardorxoja_tashxodjaev@epam.com" }
-asp_os             = "Linux"
-allowed_ip_address = "18.153.146.156"
-sql_admin_username = "ztemw"
 
-/*
-    name     = "cmaz-tkdmv90y-mod5-rg-03"
-    location = "Central US"
-  }
-}
-
-tag = { Creator = "sardorxoja_tashxodjaev@epam.com" }
-
-app_service_plans = {
-  asp1 = {
-    name     = "cmaz-tkdmv90y-mod5-asp-01"
-    os       = "Windows"
-    sku_name = "S1"
-    worker   = 2
-
-  },
-
-  asp2 = {
-    name     = "cmaz-tkdmv90y-mod5-asp-02"
-    os       = "Windows"
-    sku_name = "S1"
-    worker   = 1
-  }
-}
-
-
-app1_name = "cmaz-tkdmv90y-mod5-app-01"
-app2_name = "cmaz-tkdmv90y-mod5-app-02"
-
-ip_restriction = [
-  {
-    name       = "allow-ip"
-    priority   = 100
-    action     = "Allow"
-    ip_address = "18.153.146.156/32"
-  },
-  {
-    name        = "allow-tm"
-    priority    = 200
-    action      = "Allow"
-    service_tag = "AzureTrafficManager"
-  }
-]
-
-tm          = "cmaz-tkdmv90y-mod5-traf"
-tm_method   = "Performance"
-tm_dns_name = "tm-dns-config-name"
-
-tm_endpoints = {
-  wsp1 = {
-    name = "wsp1-endpoint"
-    #target_resource_id = module.wsp1.id
-    weight = 100
-  }
-
-  wsp2 = {
-    name = "wsp2-endpoint"
-    #target_resource_id = module.wsp2.id
-    weight = 100
-  }
-}
-
- */
