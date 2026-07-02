@@ -40,7 +40,7 @@ module "cdn" {
   endpoint_name     = local.cdn_fd_endpoint_name
   or_gr_name        = local.cdn_fd_origin_group_name
   fd_origin_name    = local.cdn_fd_origin_name
-  fd_route_name     = var.fd_route_name
+  fd_route_name     = var.cdn_fd_route_name
   primary_blob_host = azurerm_storage_account.storage.primary_blob_host
 }
 
