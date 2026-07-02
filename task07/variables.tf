@@ -23,10 +23,10 @@ variable "storage_account_id" {
   description = "Storage account ID"
 }
 
-variable "filename_in_storage_account" {
+/* variable "filename_in_storage_account" {
   type        = string
   description = "Filename in Storage Account"
-}
+} */
 
 variable "cdn_fd_sku" {
   type        = string
@@ -43,12 +43,3 @@ variable "tag" {
   description = "My tag with name"
 }
 
-variable "fd_sku" {
-  type        = string
-  description = "Front Door sku"
-}
-
-variable "fd_route_name" {
-  type        = string
-  description = "Front Door route name"
-}

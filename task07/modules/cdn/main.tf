@@ -1,9 +1,3 @@
-resource "azurerm_user_assigned_identity" "identity" {
-  location            = var.location
-  name                = var.name_identity
-  resource_group_name = var.rg_name
-}
-
 resource "azurerm_cdn_frontdoor_profile" "fd_profile" {
   name                     = var.fd_name
   resource_group_name      = var.rg_name
@@ -65,7 +59,7 @@ resource "azurerm_cdn_frontdoor_route" "my_route" {
   #cdn_frontdoor_rule_set_ids    = [azurerm_cdn_frontdoor_rule_set.example.id]
   enabled = true
 
-  #forwarding_protocol    = "HttpsOnly"
+  forwarding_protocol    = "HttpsOnly"
   https_redirect_enabled = true
   patterns_to_match      = ["/*"]
   supported_protocols    = ["Http", "Https"]

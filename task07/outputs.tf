@@ -1,6 +1,6 @@
-output "hostname" {
+output "endpoint_hostname" {
   description = "Endpoint hostname"
-  value       = module.cdn.cdn_output
+  value       = module.cdn.endpoint_hostname
 }
 /* output "sql_server_fqdn" {
   value       = module.sql.sql_fqdn

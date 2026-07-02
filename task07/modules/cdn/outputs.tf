@@ -1,4 +1,4 @@
-output "cdn_output" {
+output "endpoint_hostname" {
   description = "Endpoint hostname"
   value       = azurerm_cdn_frontdoor_endpoint.endpoint.host_name
 }
