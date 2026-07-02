@@ -32,13 +32,13 @@ resource "azurerm_cdn_frontdoor_origin" "df_origin" {
   enabled                       = true
   #tags                           = var.tag
   certificate_name_check_enabled = false
+  host_name                      = var.primary_blob_host
+  http_port                      = 80
+  https_port                     = 443
+  origin_host_header             = var.primary_blob_host
+  priority                       = 1
+  weight                         = 1
 
-  host_name          = var.primary_blob_host
-  http_port          = 80
-  https_port         = 443
-  origin_host_header = var.primary_blob_host
-  priority           = 1
-  weight             = 1
 }
 
 resource "azurerm_cdn_frontdoor_route" "my_route" {
@@ -55,7 +55,7 @@ resource "azurerm_cdn_frontdoor_route" "my_route" {
   supported_protocols    = ["Http", "Https"]
 
   #cdn_frontdoor_custom_domain_ids = [azurerm_cdn_frontdoor_custom_domain.contoso.id, azurerm_cdn_frontdoor_custom_domain.fabrikam.id]
-  #link_to_default_domain          = false
+  link_to_default_domain = true
 
   #tags = var.tag
 }
