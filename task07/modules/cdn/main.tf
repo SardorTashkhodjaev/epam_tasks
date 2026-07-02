@@ -18,17 +18,7 @@ resource "azurerm_cdn_frontdoor_origin_group" "origin_gr" {
   #tags                     = var.tag
   name                     = var.or_gr_name
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.fd_profile.id
-  /*   session_affinity_enabled = true
 
-  restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 10
-
-  health_probe {
-    interval_in_seconds = 240
-    path                = "/healthProbe"
-    protocol            = "Https"
-    request_type        = "HEAD"
-  }
- */
   load_balancing {
     additional_latency_in_milliseconds = 0
     sample_size                        = 16
@@ -67,12 +57,6 @@ resource "azurerm_cdn_frontdoor_route" "my_route" {
   #cdn_frontdoor_custom_domain_ids = [azurerm_cdn_frontdoor_custom_domain.contoso.id, azurerm_cdn_frontdoor_custom_domain.fabrikam.id]
   #link_to_default_domain          = false
 
-  /* cache {
-    query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
-    query_strings                 = ["account", "settings"]
-    compression_enabled           = true
-    content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
-  } */
   #tags = var.tag
 }
 
