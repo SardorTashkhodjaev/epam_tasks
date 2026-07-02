@@ -3,12 +3,6 @@ variable "location" {
   description = "Location of resources"
 }
 
-variable "name_identity" {
-  type        = string
-  description = "name of the identity"
-  default     = "my_identity"
-}
-
 variable "rg_name" {
   type        = string
   description = "Resource Group name"
