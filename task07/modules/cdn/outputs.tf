@@ -1,3 +1,7 @@
+output "cdn_output" {
+  description = "Endpoint hostname"
+  value       = azurerm_cdn_frontdoor_endpoint.endpoint.host_name
+}
 /* output "sql_fqdn" {
   value       = azurerm_mssql_server.server.fully_qualified_domain_name
   description = "SQL server fully qualified domain name"
