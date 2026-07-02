@@ -4,7 +4,7 @@ provider "azurerm" {
 
 import {
   to = azurerm_resource_group.rg
-  id = var.resource_group_id
+  id = "/subscriptions/573ca0aa-e84c-48fe-86d9-6a27d550faf3/resourceGroups/cmtr-tkdmv90y-mod7-rg"
 
 }
 
@@ -27,7 +27,7 @@ resource "azurerm_storage_account" "storage" {
 
 import {
   to = azurerm_storage_account.storage
-  id = var.storage_account_id
+  id = "/subscriptions/573ca0aa-e84c-48fe-86d9-6a27d550faf3/resourceGroups/cmtr-tkdmv90y-mod7-rg/providers/Microsoft.Storage/storageAccounts/cmtrtkdmv90ymod7sa"
 }
 
 module "cdn" {

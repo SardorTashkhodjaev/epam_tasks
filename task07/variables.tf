@@ -8,20 +8,20 @@ variable "name_prefix" {
   description = "Name prefix for resources"
 }
 
-variable "resource_group_id" {
+/* variable "resource_group_id" {
   type        = string
   description = "Resource Group ID"
-}
+} */
 
 variable "storage_account_name" {
   type        = string
   description = "Storage Account name"
 }
 
-variable "storage_account_id" {
+/* variable "storage_account_id" {
   type        = string
   description = "Storage account ID"
-}
+} */
 
 /* variable "filename_in_storage_account" {
   type        = string
