@@ -49,6 +49,8 @@ resource "azurerm_cdn_frontdoor_route" "my_route" {
   #cdn_frontdoor_rule_set_ids    = [azurerm_cdn_frontdoor_rule_set.example.id]
   enabled = true
 
+  cdn_frontdoor_origin_path = "/mycontainer"
+
   forwarding_protocol    = "HttpsOnly"
   https_redirect_enabled = true
   patterns_to_match      = ["/*"]
