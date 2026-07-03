@@ -1,0 +1,10 @@
+/* locals {
+
+  rg_name                  = format("%s-rg", var.name_prefix)
+  cdn_fd_profile_name      = format("%s-fd-profile", var.name_prefix)
+  cdn_fd_endpoint_name     = format("%s-fd-endpoint", var.name_prefix)
+  cdn_fd_origin_group_name = format("%s-fd-origin-group", var.name_prefix)
+  cdn_fd_origin_name       = format("%s-fd-origin", var.name_prefix)
+
+
+} */
