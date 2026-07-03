@@ -1,0 +1,10 @@
+task03/
+task04/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+*.tfplan
+plan.out
