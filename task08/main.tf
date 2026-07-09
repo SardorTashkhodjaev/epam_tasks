@@ -2,6 +2,8 @@ provider "azurerm" {
   features {}
 }
 
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "rg" {
   name     = local.rg_name
   location = var.location
@@ -14,7 +16,7 @@ module "kv" {
 
   kv_name  = local.keyvault_name
   location = var.location
-  rg_name  = local.rg_name
+  rg_name  = azurerm_resource_group.rg.name
   tags     = var.tags
   sku      = var.kv_sku
 }
@@ -22,7 +24,7 @@ module "kv" {
 module "acr" {
   source     = "./modules/acr"
   acr_name   = local.acr_name
-  rg_name    = local.rg_name
+  rg_name    = azurerm_resource_group.rg.name
   location   = var.location
   sku        = var.acr_sku
   tags       = var.tags
@@ -36,7 +38,7 @@ module "redis" {
 
   name        = local.redis_name
   location    = var.location
-  rg_name     = local.rg_name
+  rg_name     = azurerm_resource_group.rg.name
   capacity    = var.redis_capacity
   family      = var.redis_sku_family
   sku         = var.redis_sku
@@ -51,7 +53,7 @@ module "aci" {
 
   aci_name = local.aci_name
   location = var.location
-  rg_name  = local.rg_name
+  rg_name  = azurerm_resource_group.rg.name
   tags     = var.tags
 
   login_server   = module.acr.login_server
@@ -69,7 +71,7 @@ module "aks" {
 
   aks_name       = local.aks_name
   location       = var.location
-  rg_name        = local.rg_name
+  rg_name        = azurerm_resource_group.rg.name
   node_pool_name = var.aks_np_name
   node_count     = var.aks_np_ins_count
   node_vm_size   = var.aks_np_ins_node_size
@@ -82,5 +84,19 @@ resource "azurerm_role_assignment" "aks_acr" {
   principal_id         = module.aks.kubelet_object_id
   role_definition_name = "AcrPull"
   scope                = module.acr.acr_id
+}
+
+resource "azurerm_key_vault_access_policy" "aks_kv_policy" {
+
+  key_vault_id = module.kv.key_vault_id
+
+  tenant_id = data.azurerm_client_config.current.tenant_id
+
+  object_id = module.aks.key_vault_secret_identity_object_id
+
+  secret_permissions = [
+    "Get",
+    "List"
+  ]
 }
 
