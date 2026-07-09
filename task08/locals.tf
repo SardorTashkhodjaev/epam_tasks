@@ -1,10 +1,9 @@
-/* locals {
-
-  rg_name                  = format("%s-rg", var.name_prefix)
-  cdn_fd_profile_name      = format("%s-fd-profile", var.name_prefix)
-  cdn_fd_endpoint_name     = format("%s-fd-endpoint", var.name_prefix)
-  cdn_fd_origin_group_name = format("%s-fd-origin-group", var.name_prefix)
-  cdn_fd_origin_name       = format("%s-fd-origin", var.name_prefix)
-
-
-} */
+locals {
+  rg_name       = format("%s-rg", var.name_prefix)
+  aci_name      = format("%s-ci", var.name_prefix)
+  docker_name   = format("%s-app", var.name_prefix)
+  aks_name      = format("%s-aks", var.name_prefix)
+  keyvault_name = format("%s-kv", var.name_prefix)
+  redis_name    = format("%s-redis", var.name_prefix)
+  acr_name      = "${replace(var.name_prefix, "-", "")}cr"
+}
