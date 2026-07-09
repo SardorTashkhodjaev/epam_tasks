@@ -64,6 +64,10 @@ module "aci" {
 
   redis_hostname    = module.redis.hostname
   redis_primary_key = module.redis.primary_access_key
+
+  depends_on = [
+    module.acr
+  ]
 }
 
 module "aks" {
