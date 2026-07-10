@@ -112,6 +112,15 @@ provider "kubectl" {
   load_config_file       = false
 }
 
+provider "kubernetes" {
+  host                   = module.aks.host
+  cluster_ca_certificate = base64decode(module.aks.cluster_ca_certificate)
+  client_certificate     = base64decode(module.aks.client_certificate)
+  client_key             = base64decode(module.aks.client_key)
+}
+
+
+
 resource "kubectl_manifest" "secret_provider" {
   yaml_body = templatefile(
     "${path.module}/k8s-manifests/secret-provider.yaml.tftpl",
@@ -144,6 +153,13 @@ resource "kubectl_manifest" "deployment" {
   depends_on = [
     kubectl_manifest.secret_provider
   ]
+
+  wait_for {
+    field {
+      key   = "status.availableReplicas"
+      value = "1"
+    }
+  }
 }
 
 resource "kubectl_manifest" "service" {
@@ -151,5 +167,25 @@ resource "kubectl_manifest" "service" {
 
   depends_on = [
     kubectl_manifest.deployment
+  ]
+
+  wait_for {
+    field {
+      key        = "status.loadBalancer.ingress.[0].ip"
+      value      = "^(\\d+(\\.|$)){4}"
+      value_type = "regex"
+    }
+  }
+}
+
+
+data "kubernetes_service_v1" "app" {
+  metadata {
+    name      = "redis-flask-app-service"
+    namespace = "default"
+  }
+
+  depends_on = [
+    kubectl_manifest.service
   ]
 }

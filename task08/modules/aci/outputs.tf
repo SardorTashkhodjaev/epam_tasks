@@ -12,3 +12,7 @@ output "aci_fqdn" {
   description = "Fully Qualified Domain Name of Azure Container Instance"
   value       = azurerm_container_group.aci.fqdn
 }
+
+output "fqdn" {
+  value = azurerm_container_group.aci.fqdn
+}
