@@ -161,7 +161,7 @@ resource "kubectl_manifest" "deployment" {
     }
   }
 
-  
+
 }
 
 resource "kubectl_manifest" "service" {
