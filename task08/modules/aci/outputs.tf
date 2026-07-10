@@ -8,11 +8,7 @@ output "aci_ip_address" {
   value       = azurerm_container_group.aci.ip_address
 }
 
-output "aci_fqdn" {
+output "fqdn" {
   description = "Fully Qualified Domain Name of Azure Container Instance"
   value       = azurerm_container_group.aci.fqdn
-}
-
-output "fqdn" {
-  value = azurerm_container_group.aci.fqdn
 }

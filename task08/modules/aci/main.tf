@@ -5,6 +5,7 @@ resource "azurerm_container_group" "aci" {
 
   os_type         = "Linux"
   ip_address_type = "Public"
+  dns_name_label  = var.aci_name
   restart_policy  = "Always"
 
   tags = var.tags
@@ -28,11 +29,14 @@ resource "azurerm_container_group" "aci" {
     }
 
     environment_variables = {
-      REDIS_HOSTNAME = var.redis_hostname
+      CREATOR        = "ACI"
+      REDIS_PORT     = "6380"
+      REDIS_SSL_MODE = "True"
     }
 
     secure_environment_variables = {
-      REDIS_PRIMARY_KEY = var.redis_primary_key
+      REDIS_URL = var.redis_hostname
+      REDIS_PWD = var.redis_primary_key
     }
   }
 

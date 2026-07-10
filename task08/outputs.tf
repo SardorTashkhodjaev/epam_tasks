@@ -6,6 +6,5 @@ output "aks_lb_ip" {
 
 output "aci_fqdn" {
   description = "FQDN of App in Azure Container Instance"
-
-  value = module.aci.fqdn
+  value       = module.aci.fqdn
 }
