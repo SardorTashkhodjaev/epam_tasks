@@ -104,3 +104,52 @@ resource "azurerm_key_vault_access_policy" "aks_kv_policy" {
   ]
 }
 
+provider "kubectl" {
+  host                   = module.aks.host
+  cluster_ca_certificate = base64decode(module.aks.cluster_ca_certificate)
+  client_certificate     = base64decode(module.aks.client_certificate)
+  client_key             = base64decode(module.aks.client_key)
+  load_config_file       = false
+}
+
+resource "kubectl_manifest" "secret_provider" {
+  yaml_body = templatefile(
+    "${path.module}/k8s-manifests/secret-provider.yaml.tftpl",
+    {
+      aks_kv_access_identity_id  = module.aks.key_vault_secret_identity_client_id
+      kv_name                    = local.keyvault_name
+      redis_url_secret_name      = var.redis_secret_hostname
+      redis_password_secret_name = var.redis_secret_pr_key
+      tenant_id                  = data.azurerm_client_config.current.tenant_id
+    }
+  )
+
+  depends_on = [
+    module.aks,
+    azurerm_key_vault_access_policy.aks_kv_policy,
+    azurerm_role_assignment.aks_acr
+  ]
+}
+
+resource "kubectl_manifest" "deployment" {
+  yaml_body = templatefile(
+    "${path.module}/k8s-manifests/deployment.yaml.tftpl",
+    {
+      acr_login_server = module.acr.login_server
+      app_image_name   = local.docker_name
+      image_tag        = "latest"
+    }
+  )
+
+  depends_on = [
+    kubectl_manifest.secret_provider
+  ]
+}
+
+resource "kubectl_manifest" "service" {
+  yaml_body = file("${path.module}/k8s-manifests/service.yaml")
+
+  depends_on = [
+    kubectl_manifest.deployment
+  ]
+}

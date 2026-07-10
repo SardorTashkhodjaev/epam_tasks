@@ -5,6 +5,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
   tags                = var.tags
   dns_prefix          = var.dns_prefix
 
+  oidc_issuer_enabled = true
+
   default_node_pool {
     name            = var.node_pool_name
     node_count      = var.node_count
