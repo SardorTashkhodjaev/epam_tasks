@@ -151,7 +151,7 @@ resource "kubectl_manifest" "deployment" {
   )
 
   depends_on = [
-    kubectl_manifest.secret_provider
+    kubectl_manifest.secret_provider, module.redis
   ]
 
   wait_for {
@@ -160,6 +160,8 @@ resource "kubectl_manifest" "deployment" {
       value = "1"
     }
   }
+
+  
 }
 
 resource "kubectl_manifest" "service" {
