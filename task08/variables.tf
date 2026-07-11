@@ -8,27 +8,31 @@ variable "name_prefix" {
   description = "Name prefix for other names"
 }
 
-variable "redis_capacity" {
-  type        = number
-  description = "Azure Redis Cache Service (ARCS) capacity"
-}
-
 variable "redis_sku" {
   type        = string
   description = "Azure Redis Cache Service (ARCS) sku"
 }
 
-variable "redis_sku_family" {
+variable "sa_repl_type" {
   type        = string
-  description = "Azure Redis Cache Service (ARCS) fam"
+  description = "Account replication type"
+}
+
+variable "sa_cont_name" {
+  type        = string
+  description = "Container name"
+}
+
+variable "sa_access_type" {
+  type        = string
+  description = "Container name"
 }
 
 variable "kv_sku" {
   type        = string
   description = "Azure Key Vault sku"
 }
-
-variable "redis_secret_pr_key" {
+variable "redis_secret_pass" {
   type        = string
   description = "Secret name for redis primary key"
 }
@@ -37,17 +41,22 @@ variable "redis_secret_hostname" {
   type        = string
   description = "Secret name for redis hostname"
 }
-
 variable "acr_sku" {
   type        = string
   description = "Azure Container Registry (ACR) sku"
 }
 
 
-variable "aci_sku" {
+variable "aca_type" {
   type        = string
-  description = "Azure Container Instance (ACI) sku"
+  description = "Azure Container App (ACA) Workload profile type"
 }
+
+variable "acae_type" {
+  type        = string
+  description = "Azure Container App Environment (ACAE) Workload profile type"
+}
+
 
 variable "aks_np_name" {
   type        = string
@@ -75,10 +84,4 @@ variable "aks_np_os" {
 variable "location" {
   type        = string
   description = "Location for RG"
-}
-
-variable "git_pat" {
-  type        = string
-  description = "GitHub Personal Access Token"
-  sensitive   = true
 }

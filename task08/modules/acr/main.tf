@@ -16,13 +16,15 @@ resource "azurerm_container_registry_task" "docker_task" {
   }
   docker_step {
     dockerfile_path      = var.dockerfile_path
-    context_path         = var.git_repo_url
-    context_access_token = var.git_pat
+    context_path         = var.blob_url
+    context_access_token = var.sas_token
     image_names = [
       "${var.image_name}:{{.Run.ID}}",
       "${var.image_name}:latest"
     ]
   }
+
+  
 }
 
 resource "azurerm_container_registry_task_schedule_run_now" "set_schedule" {

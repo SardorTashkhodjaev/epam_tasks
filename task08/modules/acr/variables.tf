@@ -29,23 +29,10 @@ variable "task_name" {
   default     = "my_task"
 }
 
-variable "git_repo_url" {
-  type        = string
-  description = "Git repo URL"
-  default     = "https://github.com/SardorTashkhodjaev/epam_tasks.git"
-
-}
-
-variable "git_pat" {
-  type        = string
-  description = "Token for access to GIT"
-  sensitive   = true
-
-}
 variable "dockerfile_path" {
   type        = string
   description = "dockerfile_path in GIT repo"
-  default     = "task08/application/Dockerfile"
+  default     = "Dockerfile"
 
 }
 
@@ -53,4 +40,15 @@ variable "image_name" {
   type        = string
   description = "Docker image name"
 
+}
+
+variable "blob_url" {
+  type        = string
+  description = "URL of application archive in Storage Account"
+}
+
+variable "sas_token" {
+  type        = string
+  description = "SAS token for Storage Account blob"
+  sensitive   = true
 }

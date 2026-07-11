@@ -1,10 +1,14 @@
-output "aks_lb_ip" {
-  description = "Load Balancer IP address of APP in AKS"
-
-  value = data.kubernetes_service_v1.app.status[0].load_balancer[0].ingress[0].ip
+output "redis_fqdn" {
+  description = "FQDN of Redis in Azure Container Instance"
+  value       = module.aci.redis_fqdn
 }
 
-output "aci_fqdn" {
-  description = "FQDN of App in Azure Container Instance"
-  value       = module.aci.fqdn
+output "aca_fqdn" {
+  description = "FQDN of App in Azure Container App"
+  value       = module.aca.aca_fqdn
+}
+
+output "aks_lb_ip" {
+  description = "Load Balancer IP address of APP in AKS"
+  value       = module.k8s.aks_lb_ip
 }

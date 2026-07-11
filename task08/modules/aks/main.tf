@@ -4,7 +4,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   resource_group_name = var.rg_name
   tags                = var.tags
   dns_prefix          = var.dns_prefix
-
+  sku_tier            = "Free"
   oidc_issuer_enabled = true
 
   default_node_pool {
