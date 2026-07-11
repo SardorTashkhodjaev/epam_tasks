@@ -49,7 +49,7 @@ module "keyvault" {
 module "aci" {
   source = "./modules/aci_redis"
 
-  aci_name = local.aci_name
+  aci_name = local.redis_aci_name
   location = var.location
   rg_name  = azurerm_resource_group.rg.name
 
@@ -92,7 +92,7 @@ module "aca" {
   source = "./modules/aca"
 
   aca_name     = local.aca_name
-  aca_env_name = local.acae_name
+  aca_env_name = local.aca_env_name
 
   location = var.location
   rg_name  = azurerm_resource_group.rg.name
