@@ -56,20 +56,18 @@ resource "azurerm_firewall_application_rule_collection" "fw_app_rule" {
   priority            = 100
   action              = "Allow"
 
-  rule {
-    name = "allow-https"
+  dynamic "rule" {
+    for_each = local.app_rules
 
-    source_addresses = [
-      "10.0.0.0/16",
-    ]
+    content {
+      name             = rule.key
+      source_addresses = rule.value.source_addresses
+      target_fqdns     = rule.value.target_fqdns
 
-    target_fqdns = [
-      "*.google.com",
-    ]
-
-    protocol {
-      port = "443"
-      type = "Https"
+      protocol {
+        port = rule.value.port
+        type = rule.value.type
+      }
     }
   }
 }
